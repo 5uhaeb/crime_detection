@@ -1,0 +1,5 @@
+{
+  "placeholder": true,
+  "labels": ["class_0", "class_1", "class_2"],
+  "todo": "Replace these labels with the exact training class names in the same order used during model training."
+}
