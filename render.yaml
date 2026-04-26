@@ -12,3 +12,5 @@ services:
         value: /app/model
       - key: CORS_ORIGINS
         value: "*"
+      - key: CORS_ORIGIN_REGEX
+        value: https://.*\.vercel\.app

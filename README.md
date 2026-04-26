@@ -130,6 +130,7 @@ Manual Render settings if you do not use the blueprint:
 - Environment variables:
    - `MODEL_DIR=/app/model`
    - `CORS_ORIGINS=*` for first deploy, then `https://your-vercel-app.vercel.app`
+   - `CORS_ORIGIN_REGEX=https://.*\.vercel\.app`
 
 After deploy, verify:
 
@@ -167,6 +168,7 @@ CORS_ORIGINS=https://your-vercel-app.vercel.app
 ```
 
 If you use Vercel preview deployments, add each preview URL to `CORS_ORIGINS` as a comma-separated list.
+The backend also supports `CORS_ORIGIN_REGEX=https://.*\.vercel\.app`, which is useful for Vercel preview and generated deployment URLs.
 
 ### Netlify Frontend
 

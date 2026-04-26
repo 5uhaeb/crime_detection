@@ -28,10 +28,12 @@ allowed_origins = [
     if origin.strip()
 ]
 allow_all_origins = "*" in allowed_origins
+allowed_origin_regex = os.getenv("CORS_ORIGIN_REGEX", r"https://.*\.vercel\.app")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"] if allow_all_origins else allowed_origins,
+    allow_origin_regex=None if allow_all_origins else allowed_origin_regex,
     allow_credentials=not allow_all_origins,
     allow_methods=["*"],
     allow_headers=["*"],
