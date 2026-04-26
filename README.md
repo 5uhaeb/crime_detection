@@ -122,7 +122,8 @@ Manual Render settings if you do not use the blueprint:
 
 - Service type: Web Service
 - Environment: Docker
-- Dockerfile path: `./backend/Dockerfile`
+- Root directory: leave blank
+- Dockerfile path: `./Dockerfile`
 - Docker build context directory: `.`
 - Health check path: `/health`
 - Port: Render sets `PORT` automatically; the Dockerfile reads it.

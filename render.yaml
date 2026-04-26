@@ -5,7 +5,7 @@ services:
     plan: free
     region: oregon
     dockerContext: .
-    dockerfilePath: ./backend/Dockerfile
+    dockerfilePath: ./Dockerfile
     healthCheckPath: /health
     envVars:
       - key: MODEL_DIR
