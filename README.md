@@ -139,18 +139,26 @@ curl https://your-render-backend.onrender.com/health
 
 ### Vercel Frontend
 
-This repo includes root `vercel.json` for a monorepo deployment. Keep the Vercel project root as the repository root.
+This repo includes Vercel config for both common setups. The simplest setup is to keep the Vercel project root as the repository root.
 
 Vercel settings:
 
 - Framework preset: Vite
-- Install command: `cd frontend && npm install`
-- Build command: `cd frontend && npm run build`
+- Root directory: leave blank
+- Install command: `npm install --prefix frontend`
+- Build command: `npm run build --prefix frontend`
 - Output directory: `frontend/dist`
 - Environment variables:
   - `VITE_API_URL=https://your-render-backend.onrender.com`
 
 The `vercel.json` file also rewrites browser routes to `index.html`, which keeps the single-page React app working on refresh.
+
+If you set Vercel's Root Directory to `frontend`, use the `frontend/vercel.json` settings instead:
+
+- Root directory: `frontend`
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output directory: `dist`
 
 After Vercel deploys, return to Render and set:
 
