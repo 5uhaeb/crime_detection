@@ -11,7 +11,7 @@ A full-stack prototype for running image and sampled-video inference with a Kera
 - Keras model loading from `config.json` and `model.weights.h5`
 - Image preprocessing for `96x96` RGB input
 - Dockerfiles and `docker-compose.yml`
-- Deployment notes for Render, Netlify/Vercel, and Docker
+- Provider-ready deployment files for Render, Vercel, and Docker
 
 ## Model Assets
 
@@ -104,22 +104,69 @@ curl -X POST "http://localhost:8000/predict-video?sample_every=30" ^
 
 ## Deployment
 
+### Recommended Production Flow
+
+Deploy the backend to Render first, then copy the Render service URL into Vercel as `VITE_API_URL`.
+
 ### Render Backend
 
-1. Create a new Web Service from this GitHub repo.
-2. Use Docker deployment with `backend/Dockerfile`.
-3. Set environment variables:
+This repo includes `render.yaml`, so Render can create the backend service from the repository root.
+
+1. In Render, choose **New** -> **Blueprint**.
+2. Connect `https://github.com/5uhaeb/crime_detection`.
+3. Select the included `render.yaml`.
+4. The blueprint starts with `CORS_ORIGINS=*` so the first Vercel deploy can connect immediately.
+5. After the frontend URL is final, replace `*` with your Vercel domain.
+
+Manual Render settings if you do not use the blueprint:
+
+- Service type: Web Service
+- Environment: Docker
+- Dockerfile path: `./backend/Dockerfile`
+- Docker build context directory: `.`
+- Health check path: `/health`
+- Port: Render sets `PORT` automatically; the Dockerfile reads it.
+- Environment variables:
    - `MODEL_DIR=/app/model`
-   - `CORS_ORIGINS=https://your-frontend-domain`
-4. Expose port `8000`.
+   - `CORS_ORIGINS=*` for first deploy, then `https://your-vercel-app.vercel.app`
 
-### Netlify or Vercel Frontend
+After deploy, verify:
 
-1. Set the project root to `frontend`.
+```bash
+curl https://your-render-backend.onrender.com/health
+```
+
+### Vercel Frontend
+
+This repo includes root `vercel.json` for a monorepo deployment. Keep the Vercel project root as the repository root.
+
+Vercel settings:
+
+- Framework preset: Vite
+- Install command: `cd frontend && npm install`
+- Build command: `cd frontend && npm run build`
+- Output directory: `frontend/dist`
+- Environment variables:
+  - `VITE_API_URL=https://your-render-backend.onrender.com`
+
+The `vercel.json` file also rewrites browser routes to `index.html`, which keeps the single-page React app working on refresh.
+
+After Vercel deploys, return to Render and set:
+
+```bash
+CORS_ORIGINS=https://your-vercel-app.vercel.app
+```
+
+If you use Vercel preview deployments, add each preview URL to `CORS_ORIGINS` as a comma-separated list.
+
+### Netlify Frontend
+
+Netlify also works, but Vercel is preconfigured in this repo.
+
+1. Set the base directory to `frontend`.
 2. Build command: `npm run build`
 3. Publish directory: `frontend/dist`
-4. Set environment variable:
-   - `VITE_API_URL=https://your-backend-domain`
+4. Set `VITE_API_URL=https://your-render-backend.onrender.com`.
 
 ### Docker Backend Only
 
@@ -161,6 +208,8 @@ metadata.json
 model.weights.h5
 labels.json
 docker-compose.yml
+render.yaml
+vercel.json
 ```
 
 ## Notes For Beginners
