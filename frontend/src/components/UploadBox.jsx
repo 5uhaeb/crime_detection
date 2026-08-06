@@ -24,10 +24,10 @@ export default function UploadBox({
 
   return (
     <section className="panel">
-      <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="panel-head">
         <div>
-          <h2 className="text-lg font-semibold text-slate-950">{title}</h2>
-          <p className="mt-1 text-sm text-slate-600">{description}</p>
+          <p className="module-id">Module // Input</p><h2>{title}</h2>
+          <p className="muted mt-2 text-sm">{description}</p>
         </div>
         <button
           type="button"
@@ -54,10 +54,10 @@ export default function UploadBox({
           <img src={previewUrl} alt="Selected upload preview" className="h-full w-full object-cover" />
         ) : (
           <div className="flex flex-col items-center gap-3 px-6 text-center">
-            <Icon className="h-10 w-10 text-slate-500" />
+            <Icon className="upload-icon" />
             <div>
-              <p className="font-medium text-slate-900">{fileName || "Drop a file here"}</p>
-              <p className="mt-1 text-sm text-slate-500">or click to browse</p>
+              <p className="font-semibold">{fileName || "Drop a file here"}</p>
+              <p className="muted mt-1 text-sm">or click to browse // local processing</p>
             </div>
           </div>
         )}
@@ -75,7 +75,7 @@ export default function UploadBox({
       />
 
       {loading && (
-        <div className="mt-4 flex items-center gap-2 text-sm font-medium text-slate-700">
+        <div className="loader">
           <Loader2 className="h-4 w-4 animate-spin" />
           Running inference
         </div>
