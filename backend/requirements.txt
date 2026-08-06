@@ -7,3 +7,4 @@ opencv-python-headless==4.10.0.84
 tensorflow==2.19.0
 keras==3.10.0
 pydantic==2.10.5
+pymongo[srv]>=4.8,<5

@@ -1,12 +1,4 @@
-import { AlertTriangle, BarChart3, ShieldAlert } from "lucide-react";
-
-function riskFor(confidence, predictedClass) {
-  const name = predictedClass.toLowerCase();
-  if (name.includes("normal") || name.includes("safe") || name === "class_0") return "Low";
-  if (confidence >= 0.75) return "High";
-  if (confidence >= 0.5) return "Medium";
-  return "Uncertain";
-}
+import { AlertTriangle, BarChart3, BrainCircuit } from "lucide-react";
 
 export default function ResultCard({ result }) {
   if (!result) {
@@ -22,7 +14,6 @@ export default function ResultCard({ result }) {
   }
 
   const confidence = Math.round(result.confidence * 100);
-  const risk = riskFor(result.confidence, result.predicted_class);
 
   return (
     <section className="panel">
@@ -32,8 +23,8 @@ export default function ResultCard({ result }) {
           <h2 className="mt-2 text-3xl font-semibold text-slate-950">{result.predicted_class}</h2>
         </div>
         <span className="risk-pill">
-          <ShieldAlert className="h-4 w-4" />
-          {risk} risk
+          <BrainCircuit className="h-4 w-4" />
+          Model output
         </span>
       </div>
 
@@ -64,7 +55,7 @@ export default function ResultCard({ result }) {
       {result.labels_are_placeholder && (
         <div className="mt-6 flex gap-3 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
-          <p>Class labels are placeholders. Update labels.json with the training class order.</p>
+          <p>The training label mapping is missing. Treat class numbers as anonymous model outputs—not crime categories or safety findings.</p>
         </div>
       )}
     </section>

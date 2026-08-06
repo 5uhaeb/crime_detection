@@ -1,12 +1,13 @@
-# Crime Detection AI
+# Visual Event Analysis Lab
 
-A full-stack prototype for running image and sampled-video inference with a Keras MobileNetV2-based model.
+A full-stack prototype for running image and sampled-video inference with a Keras MobileNetV2-based model, with analysis metadata stored in MongoDB.
 
-**Disclaimer:** This model is for educational/prototype use only and should not be used as the sole basis for safety, law enforcement, or emergency decisions. Do not treat predictions as proof that a crime occurred.
+**Important limitation:** the uploaded model has three outputs, but its original training class names and order were not included. The application therefore reports anonymous `class_0`, `class_1`, and `class_2` outputs. They are not verified crime categories and must never be treated as evidence or used for safety, law-enforcement, or emergency decisions.
 
 ## What Is Included
 
 - FastAPI backend with `/health`, `/model/info`, `/predict`, and `/predict-video`
+- MongoDB-backed `/analyses` history and `/analyses/stats`
 - React + Vite + Tailwind frontend dashboard
 - Keras model loading from `config.json` and `model.weights.h5`
 - Image preprocessing for `96x96` RGB input
@@ -48,6 +49,8 @@ Environment variables:
 BACKEND_PORT=8000
 MODEL_DIR=..
 CORS_ORIGINS=http://localhost:5173
+MONGODB_URI=mongodb+srv://...
+MONGODB_DB=crime_detection
 ```
 
 ## Local Frontend Setup
@@ -131,6 +134,8 @@ Manual Render settings if you do not use the blueprint:
    - `MODEL_DIR=/app/model`
    - `CORS_ORIGINS=*` for first deploy, then `https://your-vercel-app.vercel.app`
    - `CORS_ORIGIN_REGEX=https://.*\.vercel\.app`
+   - `MONGODB_URI` pointing to MongoDB Atlas
+   - `MONGODB_DB=crime_detection`
 
 After deploy, verify:
 

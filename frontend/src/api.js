@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || "https://crime-detection-v1.onrender.com";
 
 async function parseResponse(response) {
   const data = await response.json().catch(() => ({}));
@@ -32,6 +32,16 @@ export async function predictVideo(file, sampleEvery = 30) {
     method: "POST",
     body: formData,
   });
+  return parseResponse(response);
+}
+
+export async function getAnalyses(limit = 12) {
+  const response = await fetch(`${API_URL}/analyses?limit=${limit}`);
+  return parseResponse(response);
+}
+
+export async function getStats() {
+  const response = await fetch(`${API_URL}/analyses/stats`);
   return parseResponse(response);
 }
 

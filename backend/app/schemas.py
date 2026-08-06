@@ -7,6 +7,7 @@ class HealthResponse(BaseModel):
     status: str
     model_loaded: bool
     message: str
+    database_connected: bool = False
 
 
 class ModelInfoResponse(BaseModel):
@@ -25,6 +26,8 @@ class PredictionResponse(BaseModel):
     raw_probabilities: dict[str, float]
     labels_are_placeholder: bool
     disclaimer: str
+    analysis_id: str | None = None
+    analyzed_at: str | None = None
 
 
 class VideoFramePrediction(BaseModel):
@@ -41,3 +44,5 @@ class VideoPredictionResponse(BaseModel):
     frame_predictions: list[VideoFramePrediction]
     labels_are_placeholder: bool
     disclaimer: str
+    analysis_id: str | None = None
+    analyzed_at: str | None = None

@@ -11,8 +11,9 @@ from .utils import normalize_probabilities
 
 
 DISCLAIMER = (
-    "This model is for educational/prototype use only and should not be used "
-    "as the sole basis for safety, law enforcement, or emergency decisions."
+    "Educational visual-classification prototype. The original training label order is unavailable, "
+    "so class_0, class_1, and class_2 have no verified real-world meaning. Never use these outputs "
+    "as evidence, for identifying people, or for safety, law-enforcement, or emergency decisions."
 )
 
 
