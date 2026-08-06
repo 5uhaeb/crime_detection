@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 from PIL import Image
 from io import BytesIO
 
@@ -17,6 +18,12 @@ def test_preprocess_image_has_expected_shape_and_range():
     assert batch.shape == (1, 96, 96, 3)
     assert batch.dtype == np.float32
     assert 0 <= batch.min() <= batch.max() <= 1
+
+
+def test_broken_image_stream_is_rejected_cleanly():
+    broken_png = bytes.fromhex("89504e470d0a1a0a0000000d49484452")
+    with pytest.raises(ValueError, match="not a readable image"):
+        preprocess_image_bytes(broken_png)
 
 
 def test_normalize_probabilities_handles_logits_and_binary_output():

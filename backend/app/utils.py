@@ -11,7 +11,7 @@ def preprocess_image_bytes(image_bytes: bytes) -> np.ndarray:
     """Convert an uploaded image into the 4D tensor expected by the model."""
     try:
         image = Image.open(BytesIO(image_bytes)).convert("RGB")
-    except UnidentifiedImageError as exc:
+    except (UnidentifiedImageError, OSError, ValueError) as exc:
         raise ValueError("The uploaded file is not a readable image.") from exc
 
     image = image.resize(INPUT_SIZE)
