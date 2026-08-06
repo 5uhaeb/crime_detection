@@ -17,3 +17,17 @@ These short files are bundled only to exercise the application's real video-anal
 - Downloaded 2026-08-07.
 
 The Commons pages note that the license review is pending. If that status changes, remove or replace the affected bundled file.
+
+## `store-robbery.webm`
+
+- Source: [81 Precinct Robbery - 7-18-12](https://commons.wikimedia.org/wiki/File:81_Precinct_Robbery_-_7-18-12.webm)
+- Author/source publisher: NYPD
+- Reported context: gunpoint robbery. Wikimedia Commons marks the fixed-CCTV recording as public domain (`PD-automated`), with license review pending.
+- Downloaded 2026-08-07.
+
+## `surveillance-robbery.webm`
+
+- Source: [Robbery Suspects Caught on Surveillance Camera](https://commons.wikimedia.org/wiki/File:Robbery_Suspects_Caught_on_Surveillance_Camera.webm)
+- Author/source publisher: Los Angeles Police Department
+- Reported context: armed car-wash robbery. Wikimedia Commons marks the fixed-CCTV recording as public domain (`PD-automated`), with license review pending.
+- Downloaded 2026-08-07.
