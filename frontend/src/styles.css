@@ -57,6 +57,16 @@ h1,h2 { font-family:'Space Grotesk',sans-serif; }
 .truncate { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .status-badge { display:inline-flex; min-height:42px; align-items:center; gap:9px; padding:0 13px; border:2px solid var(--cyan); color:var(--cyan); background:#062033; font-size:12px; font-weight:700; text-transform:uppercase; box-shadow:3px 3px 0 #075a76; }
 .status-badge.degraded { border-color:var(--yellow); color:var(--yellow); box-shadow:3px 3px 0 #7e6916; }
+.demo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.demo-card { overflow:hidden; border:1px solid var(--cyan); background:#041522; }
+.demo-card video { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:#000; border-bottom:1px solid var(--cyan); }
+.demo-copy { padding:16px; }
+.demo-copy h3 { margin:5px 0; font:700 20px 'Space Grotesk',sans-serif; text-transform:uppercase; }
+.demo-copy .muted { font-size:12px; }
+.demo-actions { display:flex; align-items:center; gap:15px; margin-top:15px; }
+.demo-actions a { color:var(--cyan); font-size:11px; text-decoration:underline; text-underline-offset:3px; }
+.action-button:disabled { cursor:wait; opacity:.55; }
+.demo-note { margin:16px 0 0; padding-left:12px; border-left:3px solid var(--yellow); color:var(--yellow); font-size:11px; line-height:1.5; }
 
-@media(max-width:800px){.grid-two{grid-template-columns:1fr}.masthead{align-items:flex-start;flex-direction:column;padding:24px 18px}.metric-grid{grid-template-columns:1fr}.archive-row{grid-template-columns:80px 1fr}.archive-row time{grid-column:2}.console-wrap{padding-inline:12px}.panel{padding:17px}.hero-title{font-size:38px}}
+@media(max-width:800px){.grid-two,.demo-grid{grid-template-columns:1fr}.masthead{align-items:flex-start;flex-direction:column;padding:24px 18px}.metric-grid{grid-template-columns:1fr}.archive-row{grid-template-columns:80px 1fr}.archive-row time{grid-column:2}.console-wrap{padding-inline:12px}.panel{padding:17px}.hero-title{font-size:38px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
