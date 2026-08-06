@@ -64,6 +64,10 @@ h1,h2 { font-family:'Inter',system-ui,sans-serif; }
 .severity-badge { position:absolute; top:10px; left:10px; padding:7px 9px; border-radius:6px; color:#07111a; font-size:10px; font-weight:800; text-transform:uppercase; box-shadow:0 3px 12px rgba(0,0,0,.35); }
 .severity-badge.warning { background:var(--yellow); }
 .severity-badge.danger { color:#fff; background:var(--red); }
+.quality-badge { position:absolute; right:10px; top:10px; padding:7px 9px; border-radius:6px; color:#03111d; background:#fff; font-size:10px; font-weight:700; }
+.featured-demo { grid-column:1/-1; }
+.featured-demo .video-wrap { max-height:440px; overflow:hidden; }
+.featured-demo video { aspect-ratio:16/7; object-position:center; }
 .demo-copy { padding:16px; }
 .demo-copy h3 { margin:5px 0; font:650 18px 'Inter',sans-serif; }
 .demo-copy .muted { font-size:12px; }
@@ -110,5 +114,5 @@ h1,h2 { font-family:'Inter',system-ui,sans-serif; }
 .live-facts span { display:flex; flex-direction:column; padding:11px; border-radius:7px; background:#061725; font:600 13px 'IBM Plex Mono',monospace; }
 .live-facts small { margin-bottom:4px; color:var(--muted); font:500 9px 'Inter',sans-serif; text-transform:uppercase; letter-spacing:.08em; }
 
-@media(max-width:800px){.grid-two,.demo-grid,.how-it-works,.explanation,.explanation-grid{grid-template-columns:1fr}.masthead{align-items:flex-start;flex-direction:column;padding:24px 18px}.metric-grid{grid-template-columns:1fr}.archive-row{grid-template-columns:80px 1fr}.archive-row time{grid-column:2}.console-wrap{padding-inline:12px}.panel{padding:17px}.hero-title{font-size:38px}}
+@media(max-width:800px){.grid-two,.demo-grid,.how-it-works,.explanation,.explanation-grid{grid-template-columns:1fr}.featured-demo{grid-column:auto}.featured-demo video{aspect-ratio:16/9}.masthead{align-items:flex-start;flex-direction:column;padding:24px 18px}.metric-grid{grid-template-columns:1fr}.archive-row{grid-template-columns:80px 1fr}.archive-row time{grid-column:2}.console-wrap{padding-inline:12px}.panel{padding:17px}.hero-title{font-size:38px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
